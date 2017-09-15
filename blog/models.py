@@ -13,7 +13,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(
         blank=True, null=True)
     objects = PostManager()
-    #likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='liked_posts')
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='liked_posts')
 
     def publish(self):
         self.published_date = timezone.now()
