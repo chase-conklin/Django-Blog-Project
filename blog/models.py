@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from .managers import PostManager
 
 
 class Post(models.Model):
@@ -10,6 +12,8 @@ class Post(models.Model):
         default=timezone.now)
     published_date = models.DateTimeField(
         blank=True, null=True)
+    objects = PostManager()
+    #likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='liked_posts')
 
     def publish(self):
         self.published_date = timezone.now()
