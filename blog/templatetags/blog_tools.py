@@ -3,7 +3,7 @@ from django.urls import reverse
 
 register = template.Library()
 
-@register.inclusion_tag('tags/liked_status.html', takes_context=True)
+@register.inclusion_tag('blog/templates/blog/liked_status.html', takes_context=True)
 def liked_status(context, obj):
     user = context['user']
     is_liked = False

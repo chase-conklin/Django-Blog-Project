@@ -21,8 +21,9 @@ def post_list(request):
 
 
 @login_required
-def toggle_like(request, post_id, does_like):
+def toggle_like(request, post_id):
     post = get_object_or_404(Post, id=post_id)
+    does_like = post.likes.filter().exists()
     if does_like: #TODO check if user is authenticated
         post.likes.add(request.user)
     else:
